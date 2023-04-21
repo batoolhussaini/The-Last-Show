@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import App from "./App";
 
-function ObituaryForm() {
+function ObituaryForm({ onClose }) {
   const [name, setName] = useState("");
   const [picture, setPicture] = useState(null);
   const [dateOfBirth, setDateOfBirth] = useState("");
@@ -33,15 +33,16 @@ function ObituaryForm() {
     setIsSubmitting(true);
     // Call API to generate obituary
     try {
-      const response = await fetch("your-api-endpoint", {
-        method: "POST",
-        body: new FormData(event.target),
-      });
+    //   const response = await fetch("your-api-endpoint", {
+    //     method: "POST",
+    //     body: new FormData(event.target),
+    //   });
       // Handle response
     } catch (error) {
       console.log(error);
     } finally {
       setIsSubmitting(false);
+      onClose();
     }
   };
 

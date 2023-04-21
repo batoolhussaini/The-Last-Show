@@ -32,7 +32,7 @@ function App() {
             {/* <button id="close-button" onClick={handleCloseModal}>
               X
             </button> */}
-            <ObituaryForm />
+            <ObituaryForm onClose={handleCloseModal}/>
           </div>
         </div>
       )}
