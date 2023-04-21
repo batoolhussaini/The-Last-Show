@@ -46,6 +46,7 @@ function ObituaryForm() {
   };
 
   return (
+  <div class="overlay">
   <div className="form-container">
   <form className="obituary-form">
     <button id="close-button" onClick={App.handleCloseModal}>
@@ -94,6 +95,7 @@ function ObituaryForm() {
     </div>
 
   </form>
+  </div>
   </div>
   );
 }
