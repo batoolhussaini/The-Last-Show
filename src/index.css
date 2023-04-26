@@ -19,11 +19,15 @@ body {
   max-height: 100vh;
   color: #333;
 }
-button {
+button, input {
   cursor: pointer;
 }
+::selection { 
+  background-color: rgba(245, 178, 206, 0.621); 
+}
 
-/*HEADER CONTENT*/
+
+/* HEADER CONTENT */
 #container {
   min-height: 100vh;
   max-height: 100vh;
@@ -65,15 +69,15 @@ header aside {
   margin: 0;
   padding: 10px 0;
 }
- /* "no obituary yet"*/
- #no-ob-yet { 
-  color: gray;
-  padding: 16px;
-  text-align: center;
-  font-size: 1.2em;
+
+
+/* MAIN CONTENT*/
+#main {
+  overflow-y: scroll; 
 }
 
-/*OBITUARY FORM*/
+
+/* OBITUARY FORM */
 .overlay {
   position: fixed;
   top: 0;
@@ -138,4 +142,89 @@ header aside {
 }
 #submit-button:hover {
   background-color: #85d6b4;
+}
+
+
+/* OBITUARIES */
+ #no-ob-yet { /* "No Obituary yet" */
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  font-size: 1.9em;
+  font-weight: bold;
+}
+#description {
+  margin: 0 auto;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-family: 'Gabriola';
+  font-size: 21px;
+  text-align: left;
+}
+#drop-down {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 25px;
+}
+#drop-down:hover,
+.button:hover {
+  color: #187c71;
+}
+.obituaries-list {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.obituary-container {
+  align-self: flex-start;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding-bottom: 0.5rem;
+  display: flex;
+  text-align: center;
+  width: 275px;
+  height: auto;
+  margin: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.obituary-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+}
+.obituary-container img {
+  object-fit: cover;
+  width: 275px;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+}
+.obituary-container h2 {
+  padding: 0.3rem;
+}
+.date-container {
+  padding-bottom: 0.3rem;
+  font-size: 14px;
+  color: gray;
+}
+
+audio {
+  width: 275px;
+}
+
+@media screen and (max-width: 768px) {
+  .obituaries-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .obituary-container {
+    flex: 0 0 80%;
+  }
 }
