@@ -3,6 +3,7 @@ import FormattedDate from './FormattedDate';
 
 function ObituaryItem({ obituary, defaultExpanded = false }) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleToggleExpand = () => {
     setIsExpanded((prev) => !prev);
@@ -11,6 +12,16 @@ function ObituaryItem({ obituary, defaultExpanded = false }) {
   const formattedBornDate = FormattedDate(obituary.born);
   const formattedDiedDate = FormattedDate(obituary.died);
   const formattedDateRange = `${formattedBornDate} - ${formattedDiedDate}`;
+
+  const handlePlayPause = () => {
+    const audioElement = document.getElementById("audioElement");
+    if (isPlaying) {
+      audioElement.pause();
+    } else {
+      audioElement.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   return (
     <div className="obituary-container">
@@ -23,21 +34,20 @@ function ObituaryItem({ obituary, defaultExpanded = false }) {
         </div>
 
         <button id="drop-down" onClick={handleToggleExpand}>
-            {isExpanded ? (
-              <span>&#x25B2;</span>
-            ) : (
-              <span>&#x25BC;</span>
-            )}
+          {isExpanded ? <span>&#x25B2;</span> : <span>&#x25BC;</span>}
         </button>
-        
+
         {isExpanded && (
           <>
             <div id="description">
               <p>{obituary.description}</p>
             </div>
-            <audio controls>
-              <source src={obituary.polly_url} type="audio/mpeg" />
-            </audio>
+            <audio id="audioElement" src={obituary.polly_url}></audio>
+            <button
+              id="playPauseBtn"
+              className={isPlaying ? "pause" : "play"}
+              onClick={handlePlayPause}
+            ></button>
           </>
         )}
       </div>
@@ -46,3 +56,4 @@ function ObituaryItem({ obituary, defaultExpanded = false }) {
 }
 
 export default ObituaryItem;
+

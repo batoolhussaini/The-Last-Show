@@ -9,9 +9,9 @@ dynamodb_resource = boto3.resource("dynamodb")
 table = dynamodb_resource.Table("last-show-30134905")
 
 def lambda_handler(event, context):
-    response = table.scan()
-    items = response['Items']
     try:
+        response = table.scan()
+        items = response['Items']
         return {
             'statusCode': 200,
             'body': json.dumps(items),

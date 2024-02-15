@@ -73,7 +73,8 @@ header aside {
 
 /* MAIN CONTENT*/
 #main {
-  overflow-y: scroll; 
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 
@@ -176,12 +177,14 @@ header aside {
 }
 .obituaries-list {
   padding-top: 1rem;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
   padding-right: 1rem;
   display: flex;
-  gap: 15px;
+  gap: 1px;
   flex-wrap: wrap;
   align-items: flex-start;
+  /* justify-content: space-between; to evenly distribute the containers */
+  margin: 0 -1.1rem;
 }
 .obituary-container {
   align-self: flex-start;
@@ -190,9 +193,9 @@ header aside {
   padding-bottom: 0.5rem;
   display: flex;
   text-align: center;
-  width: 275px;
+  width: calc(25% - 22px); /* to account for the container's margin */
   height: auto;
-  margin: 10px;
+  margin: 1.1rem 0.55rem; /* to add space between the containers */
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
 .obituary-content {
@@ -202,7 +205,7 @@ header aside {
 }
 .obituary-container img {
   object-fit: cover;
-  width: 275px;
+  width: 100%;
   height: auto;
   border-radius: 10px 10px 0 0;
 }
@@ -215,16 +218,69 @@ header aside {
   color: gray;
 }
 
+
+/* Style for audio player */
 audio {
-  width: 275px;
+  width: 100%;
+  margin-top: 10px;
 }
 
-@media screen and (max-width: 768px) {
+
+/* Style for play/pause button */
+#playPauseBtn {
+  display: block;
+  width: 35px;
+  height: 35px;
+  margin: 10px auto;
+  border: 1.5px solid #000;
+  border-radius: 60%;
+  background-color: transparent;
+  background-image: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-play-512.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+}
+#playPauseBtn.pause {
+  background-image: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-pause-512.png');
+}
+
+
+/* Style for media adjustment */  
+@media (max-width: 900px) { /* 2 per row */
   .obituaries-list {
-    flex-direction: column;
-    align-items: center;
+    padding-top: 1rem;
+    padding-left: 6.5rem;
+    padding-right: 4rem;
+    gap: 45px;
+    flex-wrap: wrap;
   }
   .obituary-container {
-    flex: 0 0 80%;
+    align-self: flex-start;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding-bottom: 0.5rem;
+    display: flex;
+    text-align: center;
+    width: 37.5%;
+    height: auto;
+    margin: 1.1rem;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
+  .obituary-container img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 650px) { /* 1 per row */
+  .obituaries-list {
+    flex-wrap: wrap;
+    padding-left: 4rem;
+    padding-right: 3rem;
+    justify-content: center;
+  }
+  .obituary-container {
+    width: 70%;
+    margin-bottom: 2.2rem;
+    margin: 1.1rem 0.55rem; /* to add space between the containers */
   }
 }
