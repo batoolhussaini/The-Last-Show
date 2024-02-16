@@ -1,6 +1,3 @@
 # Team Members
-
-Put your names and UCIDs here:
-
-- Member #1: Name -- UCID
-- Member #2: Name -- UCID
+- Member #1: Batool Hussaini Syeda
+- Member #2: Teresa Lavoie
